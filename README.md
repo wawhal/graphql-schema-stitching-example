@@ -4,6 +4,8 @@ This is a boilerplate reference for setting up a GraphQL schema-stitching server
 It is ideal to customise the default Hasura schema or add custom resolvers and uses
 [graphql-tools](https://github.com/apollographql/graphql-tools) and [apollo-server](https://github.com/apollographql/apollo-server).
 
+![Hasura GraphQL engine schema stitching](./gsse.png)
+
 ## Usage
 To run, run the following commands:
 
