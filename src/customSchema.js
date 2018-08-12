@@ -1,32 +1,40 @@
-const { makeExecutableSchema } = require('graphql-tools');
+const {makeExecutableSchema} = require('graphql-tools');
 
-const getCustomSchema = () => {
+/* In this file, we're creating a custom GraphQL schema
+ * with new root level fields and resolvers.
+ */
+
+const myCustomSchema = () => {
+
+  // Define custom types here
   const typeDefs = `
-    type rootFieldFromCustomResolver {
+    type myCustomRootField{
       hello: String
     }
 
     type Query {
-      rootFieldFromCustomResolver: rootFieldFromCustomResolver
+      myCustomRootField: myCustomRootField
     }
-  `
-  ;
-  const resolvers = {
+  `;
+
+  // Define custom resolvers for the types defined
+  // above
+  const myCustomResolvers = {
     Query: {
-      rootFieldFromCustomResolver: (parent, args, context, info) => {
-        // custom logic
-        // ...
-        // return JSON
+      // Add a custom resolver
+      myCustomRootField: (parent, args, context, info) => {
+        // custom logic that returns JSON per the requested query
         return { hello: "world" };
       }
     }
   };
+
   return makeExecutableSchema({
     typeDefs,
-    resolvers
+    myCustomResolvers
   });
 };
 
-const customSchema = getCustomSchema();
+const customSchema = myCustomSchema();
 
 module.exports = customSchema;
